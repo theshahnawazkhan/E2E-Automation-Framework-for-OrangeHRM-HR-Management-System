@@ -4,6 +4,9 @@ target/
 *.war
 *.ear
 
+# Test output
+test-output/
+
 # IDE files
 .idea/
 *.iml
