@@ -5,6 +5,7 @@
 
 # Test output
 test-output/
+screenshots/
 
 # IDE files
 .idea/

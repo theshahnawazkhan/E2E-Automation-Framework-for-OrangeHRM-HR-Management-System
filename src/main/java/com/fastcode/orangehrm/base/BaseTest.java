@@ -3,7 +3,6 @@ package com.fastcode.orangehrm.base;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import com.fastcode.orangehrm.config.ConfigManager;
 import com.fastcode.orangehrm.driver.DriverManager;
 
@@ -20,9 +19,9 @@ public class BaseTest {
 
 	}
 
-//	@AfterClass
-//	public void tearDown() {
-//		DriverManager.quitDriver();
-//	}
+	@AfterClass
+	public void tearDown() {
+		DriverManager.quitDriver();
+	}
 
 }

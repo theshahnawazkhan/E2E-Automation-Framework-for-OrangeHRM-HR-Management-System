@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
 	public void setUp() {
 		super.setUp(); // Calls the setup from BaseTest
 		ExtentReportManager.getInstance(); // Initialize ExtentReports instance
-		extentTest = ExtentReportManager.createTest("Login Test");
+		extentTest = ExtentReportManager.createTest("Login Test", driver);
 
 		// Initialize ExcelUtil with the path to the Excel file
 		excelUtil = new ExcelUtil("TestData.xlsx");
@@ -49,9 +49,11 @@ public class LoginTest extends BaseTest {
 			loginPage.enterUsername(username);
 			loginPage.enterPassword(password);
 			extentTest.info("User entered username and password");
+			ExtentReportManager.addScreenshot("Credentials entered");
 
 			loginPage.clickOnLoginBtn();
 			extentTest.info("User clicked on login button");
+			ExtentReportManager.addScreenshot("Cliked on Login button");
 
 			// Validate login result
 			String currentUrl = driver.getCurrentUrl();
@@ -59,8 +61,10 @@ public class LoginTest extends BaseTest {
 			Assert.assertTrue(currentUrl.contains("dashboard"), "Login failed or redirected to unexpected URL");
 
 			extentTest.pass("Login test passed");
+			ExtentReportManager.addScreenshot("Dashboard loaded successfully.");
 		} catch (Exception e) {
 			extentTest.fail("Login test failed with error: " + e.getMessage());
+			ExtentReportManager.addScreenshot("Login test failed");
 			throw e;
 		}
 	}
